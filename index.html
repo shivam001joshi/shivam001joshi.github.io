@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Shivam Joshi — Senior Product Manager · AI SaaS · eCommerce</title>
   <meta name="description"
-    content="Senior PM with 6 years building AI SaaS, eCommerce marketplaces & B2B enterprise. $1M funded, 3× ARR growth. Open to new opportunities." />
+    content="Senior PM with ~6 years building AI SaaS, eCommerce marketplaces & B2B enterprise. $1M funded, 3× ARR growth. Open to new opportunities." />
   <meta property="og:title" content="Shivam Joshi — Senior Product Manager" />
   <meta property="og:description"
-    content="5+ years building AI SaaS, eCommerce & B2B. $1M funded, 3× ARR. Enterprise clients: Indian Parliament, Tata Motors, Decathlon and many more" />
+    content="~6 years building AI SaaS, eCommerce & B2B. $1M funded, 3× ARR. Enterprise clients: Indian Parliament, Tata Motors, Decathlon and many more" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -661,7 +661,7 @@
       };
 
       const go = p => { setPage(p); setMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
-      const links = [{ id: 'home', label: 'Home' }, { id: 'playground', label: 'AI FACTORY ✨' }, { id: 'case-studies', label: 'Case Studies' }, { id: 'contact', label: 'Contact' }];
+      const links = [{ id: 'home', label: 'Home' }, { id: 'playground', label: 'AI FACTORY ✨' }, { id: 'case-studies', label: 'Case Studies ✨' }, { id: 'contact', label: 'Contact' }];
       const isLinkActive = (linkId) => {
         if (linkId === 'playground') {
           return page === 'playground' || page === 'aidiscovery' || page === 'strategy-simulator' || page === 'voice-pilot';
@@ -918,7 +918,7 @@
                 },
                 onMouseEnter: e => { e.currentTarget.style.background = 'var(--gold2)'; e.currentTarget.style.transform = 'translateY(-2px)' },
                 onMouseLeave: e => { e.currentTarget.style.background = 'var(--gold)'; e.currentTarget.style.transform = 'translateY(0)' },
-              }, 'See My AI Factory ✨'),
+              }, 'View AI Factory ✨'),
               React.createElement('a', {
                 href: './Shivam_Joshi_SPM_CV1_2026.pdf',
                 download: 'Shivam_Joshi_SPM_CV1_2026.pdf',
@@ -933,13 +933,12 @@
               React.createElement('button', {
                 onClick: () => { setPage('case-studies'); window.scrollTo({ top: 0, behavior: 'smooth' }); },
                 style: {
-                  background: 'transparent', color: 'var(--ink)', border: '1px solid var(--border2)', fontSize: 14,
-                  fontFamily: "'Outfit',sans-serif", fontWeight: 400, padding: '13px 28px', borderRadius: 100, cursor: 'none',
-                  transition: 'border-color 0.2s, transform 0.2s'
+                  background: 'var(--gold)', color: '#fff', border: 'none', fontSize: 14, fontFamily: "'Outfit',sans-serif", fontWeight: 500,
+                  padding: '13px 28px', borderRadius: 100, cursor: 'none', transition: 'background 0.2s, transform 0.2s'
                 },
-                onMouseEnter: e => { e.currentTarget.style.borderColor = 'var(--ink)'; e.currentTarget.style.transform = 'translateY(-2px)' },
-                onMouseLeave: e => { e.currentTarget.style.borderColor = 'var(--border2)'; e.currentTarget.style.transform = 'translateY(0)' },
-              }, 'View case studies')
+                onMouseEnter: e => { e.currentTarget.style.background = 'var(--gold2)'; e.currentTarget.style.transform = 'translateY(-2px)' },
+                onMouseLeave: e => { e.currentTarget.style.background = 'var(--gold)'; e.currentTarget.style.transform = 'translateY(0)' },
+              }, 'View Case Studies ✨'),
             )
           ),
           // RIGHT STATS CARD
@@ -1143,8 +1142,8 @@
         { title: 'AI / SaaS', items: ['LLM & Agentic AI', 'NMT / Speech AI', 'API-led Growth', 'Modular Pricing', 'Plugin Integrations'] },
         { title: 'eCommerce', items: ['Marketplace Ops', 'Seller Onboarding', 'Catalog Management', 'Hyperlocal Delivery', 'Inventory Systems'] },
         { title: 'Growth & GTM', items: ['ARR Growth', 'Pipeline Expansion', 'Sales Enablement', 'Partnership Dev', 'Pricing Strategy'] },
-        { title: 'Tech Stack', items: ['Python · SQL', 'PHP / Laravel', 'AWS · GCP', 'REST APIs', 'ML Basics'] },
-        { title: 'Stakeholders', items: ['CXO Collaboration', 'Cross-functional Teams', 'Government Bodies', 'Digital Agencies', 'Enterprise Clients'] },
+        { title: 'Tech Stack', items: ['Python · SQL · REST APIs', 'Laravel / PHP', 'AWS · GCP', 'ML & Data Science Basics · Tableau', 'Google · Meta Ads & Analytics'] },
+        { title: 'Stakeholders', items: ['CXO Collaboration', 'Cross-functional Teams', 'Government Bodies', 'Digital Agencies & Partnerships', 'Enterprise Clients'] },
       ];
       return React.createElement('section', { style: { background: 'var(--cream2)', padding: '96px 5vw' } },
         React.createElement('div', { style: { maxWidth: 1080, margin: '0 auto' } },
@@ -1154,7 +1153,7 @@
               'What I ', React.createElement('em', { style: { color: 'var(--gold)' } }, 'bring')
             )
           ),
-          React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(140px,1fr))', gap: 14 } },
+          React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 14 } },
             groups.map((g, i) => React.createElement(FadeUp, { key: g.title, delay: i * 0.06 },
               React.createElement('div', {
                 style: { background: 'var(--white)', border: '1px solid var(--border)', borderRadius: 12, padding: '20px 22px', transition: 'border-color 0.2s' },
@@ -1774,7 +1773,7 @@
 
         const backendUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' || window.location.protocol === 'file:')
           ? 'http://127.0.0.1:5000/api/chat'
-          : 'https://shivam001joshi.pythonanywhere.com/api/chat';
+          : 'https://mestocy.pythonanywhere.com/api/chat';
 
         try {
           const controller = new AbortController();
@@ -2974,7 +2973,7 @@
 
         const backendUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' || window.location.protocol === 'file:')
           ? 'http://127.0.0.1:5000/api/strategy-simulate'
-          : 'https://shivam001joshi.pythonanywhere.com/api/strategy-simulate';
+          : 'https://mestocy.pythonanywhere.com/api/strategy-simulate';
 
         try {
           const res = await fetch(backendUrl, {
@@ -3559,7 +3558,7 @@
 
         const backendHost = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' || window.location.protocol === 'file:')
           ? 'http://127.0.0.1:5000'
-          : 'https://shivam001joshi.pythonanywhere.com';
+          : 'https://mestocy.pythonanywhere.com';
 
         addLog('Connecting to backend services...');
         fetch(`${backendHost}/api/voice-agents`)
@@ -3836,7 +3835,7 @@
         }
 
         const host = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' || window.location.protocol === 'file:')
-          ? 'http://127.0.0.1:5000' : 'https://shivam001joshi.pythonanywhere.com';
+          ? 'http://127.0.0.1:5000' : 'https://mestocy.pythonanywhere.com';
 
         const form = new FormData();
         form.append('name', 'Visitor');
