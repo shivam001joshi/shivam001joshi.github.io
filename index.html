@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Shivam Joshi — Senior Product Manager · AI SaaS · eCommerce</title>
   <meta name="description"
-    content="Senior PM with ~6 years building AI SaaS, eCommerce marketplaces & B2B enterprise. $1M funded, 3× ARR growth. Open to new opportunities." />
+    content="Senior PM with 5+ years building AI SaaS, eCommerce marketplaces & B2B enterprise. $1M funded, 3× ARR growth. Open to new opportunities." />
   <meta property="og:title" content="Shivam Joshi — Senior Product Manager" />
   <meta property="og:description"
-    content="~6 years building AI SaaS, eCommerce & B2B. $1M funded, 3× ARR. Enterprise clients: Indian Parliament, Tata Motors, Decathlon and many more" />
+    content="5+ years building AI SaaS, eCommerce & B2B. $1M funded, 3× ARR. Enterprise clients: Indian Parliament, Tata Motors, Decathlon and many more" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -4119,7 +4119,7 @@
 
       const handleTaxLanguageChange = (lang) => {
         setTaxLanguage(lang);
-        const greetingText = lang === 'hi' 
+        const greetingText = lang === 'hi'
           ? "नमस्ते! आयकर विभाग सहायता केंद्र में आपका स्वागत है। मैं आयकर रिटर्न (ITR) फाइलिंग या कर संबंधी प्रश्नों में आपकी क्या सहायता कर सकता हूँ?"
           : "Hello! Welcome to the Income Tax Department Help Center. How can I assist you with your Income Tax Return (ITR) filing or tax-related queries today?";
         setMessages([{ id: 'g1-' + Date.now(), sender: 'bot', text: greetingText }]);
@@ -4464,14 +4464,14 @@
         const synth = window.speechSynthesis;
         synth.cancel(); // kill existing readings
         const utter = new SpeechSynthesisUtterance(text);
-        
+
         const targetLang = (activeAgent === 'IncomeTaxDepartmentBot' && taxLanguage === 'hi') ? 'hi-IN' : 'en-US';
         utter.lang = targetLang;
-        
+
         // Find best neural/natural voice if available
         const voices = synth.getVoices();
         let bestVoice = null;
-        
+
         if (targetLang === 'hi-IN') {
           // Look for Google Hindi or Edge Natural Hindi voices
           bestVoice = voices.find(v => v.lang.includes('hi-IN') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Online')));
@@ -4481,12 +4481,12 @@
           bestVoice = voices.find(v => v.lang.includes('en-US') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Online') || v.name.includes('Aria') || v.name.includes('AriaNeural')));
           if (!bestVoice) bestVoice = voices.find(v => v.lang.includes('en-US'));
         }
-        
+
         if (bestVoice) {
           utter.voice = bestVoice;
           addLog(`Selected local SpeechSynthesis voice: ${bestVoice.name}`);
         }
-        
+
         utter.onend = () => {
           setStatusText('Idle');
           activePlayingMsg.current = null;
@@ -4626,10 +4626,10 @@
               const key = (localStorage.getItem('custom_openai_key') || '').trim();
               if (!key) throw new Error('API key missing');
               addLog('Executing edge generative query...');
-              const sysPrompt = activeAgent === 'IncomeTaxDepartmentBot' 
-                ? (taxLanguage === 'hi' 
-                    ? (AGENT_PROMPTS.IncomeTaxDepartmentBot + "\n\nGender Persona:\nYour gender is strictly FEMALE. You must always use feminine verb endings and grammar in Hindi (e.g. use \"करती हूँ\" instead of \"करता हूँ\", \"बताऊँगी\" instead of \"बताऊँगा\", \"कर सकती हूँ\" instead of \"कर सकता हूँ\").\n\nAbbreviation Formatting Rule:\nWhen writing uppercase abbreviations or acronyms (like I-T-R, P-A-N, O-T-P, G-S-T), you MUST separate each letter with a hyphen (e.g. write \"I-T-R\" instead of \"ITR\", \"P-A-N\" instead of \"PAN\", \"O-T-P\" instead of \"OTP\", \"G-S-T\" instead of \"GST\"). This guarantees that the text-to-speech engine reads them alphabetically letter-by-letter instead of pronouncing them as single words.") 
-                    : "You are a helpful, empathetic, and secure customer support assistant for the Income Tax Department of India.\n\nYour role is to assist users with Income Tax Return (ITR) filing and related queries using only verified government-published information.\n\nTone: Be calm, kind, and natural. Avoid robotic replies.\n\nGender Persona:\nYour gender is strictly FEMALE. Maintain a warm, helpful, and respectful female support officer tone in your responses.\n\nAbbreviation Formatting Rule:\nWhen writing uppercase abbreviations or acronyms (like I-T-R, P-A-N, O-T-P, G-S-T), you MUST separate each letter with a hyphen (e.g. write \"I-T-R\" instead of \"ITR\", \"P-A-N\" instead of \"PAN\", \"O-T-P\" instead of \"OTP\", \"G-S-T\" instead of \"GST\"). This guarantees that the text-to-speech engine reads them alphabetically letter-by-letter instead of pronouncing them as single words.\n\nLanguage Rules: Respond strictly, 100% exclusively in plain English. Do not use Hindi or Devanagari script. Never use Romanized Hindi (Hinglish) in your response. Even if the user asks a query in Hindi or Hinglish, you MUST translate your understanding and reply only in perfect English.\n\nPrivacy: Never ask for Aadhaar, PAN, passwords, OTPs, or bank details. If shared, say: \"For your security, please do not share your personal details here.\"\n\nStep-by-Step: Break tasks into single steps. Wait for confirmation. Summarize at the end.\n\nKeep responses concise (2-3 sentences max for voice).") 
+              const sysPrompt = activeAgent === 'IncomeTaxDepartmentBot'
+                ? (taxLanguage === 'hi'
+                  ? (AGENT_PROMPTS.IncomeTaxDepartmentBot + "\n\nGender Persona:\nYour gender is strictly FEMALE. You must always use feminine verb endings and grammar in Hindi (e.g. use \"करती हूँ\" instead of \"करता हूँ\", \"बताऊँगी\" instead of \"बताऊँगा\", \"कर सकती हूँ\" instead of \"कर सकता हूँ\").\n\nAbbreviation Formatting Rule:\nWhen writing uppercase abbreviations or acronyms (like I-T-R, P-A-N, O-T-P, G-S-T), you MUST separate each letter with a hyphen (e.g. write \"I-T-R\" instead of \"ITR\", \"P-A-N\" instead of \"PAN\", \"O-T-P\" instead of \"OTP\", \"G-S-T\" instead of \"GST\"). This guarantees that the text-to-speech engine reads them alphabetically letter-by-letter instead of pronouncing them as single words.")
+                  : "You are a helpful, empathetic, and secure customer support assistant for the Income Tax Department of India.\n\nYour role is to assist users with Income Tax Return (ITR) filing and related queries using only verified government-published information.\n\nTone: Be calm, kind, and natural. Avoid robotic replies.\n\nGender Persona:\nYour gender is strictly FEMALE. Maintain a warm, helpful, and respectful female support officer tone in your responses.\n\nAbbreviation Formatting Rule:\nWhen writing uppercase abbreviations or acronyms (like I-T-R, P-A-N, O-T-P, G-S-T), you MUST separate each letter with a hyphen (e.g. write \"I-T-R\" instead of \"ITR\", \"P-A-N\" instead of \"PAN\", \"O-T-P\" instead of \"OTP\", \"G-S-T\" instead of \"GST\"). This guarantees that the text-to-speech engine reads them alphabetically letter-by-letter instead of pronouncing them as single words.\n\nLanguage Rules: Respond strictly, 100% exclusively in plain English. Do not use Hindi or Devanagari script. Never use Romanized Hindi (Hinglish) in your response. Even if the user asks a query in Hindi or Hinglish, you MUST translate your understanding and reply only in perfect English.\n\nPrivacy: Never ask for Aadhaar, PAN, passwords, OTPs, or bank details. If shared, say: \"For your security, please do not share your personal details here.\"\n\nStep-by-Step: Break tasks into single steps. Wait for confirmation. Summarize at the end.\n\nKeep responses concise (2-3 sentences max for voice).")
                 : (AGENT_PROMPTS[activeAgent] || AGENT_PROMPTS.AiStrategyOracle);
               const t0 = Date.now();
               const edgeHistory = messages
@@ -4664,12 +4664,12 @@
               const reply = d.choices[0].message.content.trim();
 
               setMessages(prev => [...prev, { id: `b-${Date.now()}`, sender: 'bot', text: reply }]);
-              
+
               const promptLength = sysPrompt ? sysPrompt.length : 1500;
               const inTokens = Math.max(1, Math.floor((promptLength + (text ? text.length : 0)) / 4.0));
               const outTokens = Math.max(1, Math.floor(reply.length / 4.0));
               const edgeLlmCost = (inTokens * (0.150 / 1000000.0)) + (outTokens * (0.600 / 1000000.0));
-              
+
               const edgeStats = {
                 stt: 0,
                 gpt: Date.now() - t0,
@@ -4683,7 +4683,7 @@
               };
               setStats(edgeStats);
               setTotalSessionCost(prev => prev + edgeLlmCost);
-              
+
               addLog('Edge query completed. Synthesizing output voice locally...');
               speakBrowser(reply);
             } catch (err) {
@@ -4918,8 +4918,8 @@
                     whiteSpace: 'nowrap'
                   }
                 }, activeAgent === 'IncomeTaxDepartmentBot'
-                     ? (taxLanguage === 'hi' ? 'आयकर रिटर्न (ITR) फाइलिंग और कर संबंधी सहायता।' : 'Income Tax Return (ITR) filing & support services.')
-                     : (agents.find(x => x.id === activeAgent)?.preview || '')
+                  ? (taxLanguage === 'hi' ? 'आयकर रिटर्न (ITR) फाइलिंग और कर संबंधी सहायता।' : 'Income Tax Return (ITR) filing & support services.')
+                  : (agents.find(x => x.id === activeAgent)?.preview || '')
                 ),
                 activeAgent === 'IncomeTaxDepartmentBot' && React.createElement('div', {
                   style: {
@@ -4980,461 +4980,461 @@
                   background: 'var(--white)'
                 }
               },
-              messages.map(m => React.createElement('div', {
-                key: m.id,
-                style: {
-                  alignSelf: m.sender === 'user' ? 'flex-end' : (m.sender === 'system' ? 'center' : 'flex-start'),
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 4,
-                  maxWidth: m.sender === 'system' ? '90%' : '80%'
-                }
-              },
-                React.createElement('div', {
+                messages.map(m => React.createElement('div', {
+                  key: m.id,
                   style: {
-                    background: m.sender === 'user' ? 'var(--gold-bg)' : (m.sender === 'system' ? (theme === 'dark' ? 'rgba(245,158,11,0.08)' : 'rgba(180,83,9,0.06)') : 'var(--cream2)'),
-                    border: `1px solid ${m.sender === 'user' ? 'rgba(212,168,67,0.3)' : (m.sender === 'system' ? (theme === 'dark' ? 'rgba(245,158,11,0.25)' : 'rgba(180,83,9,0.2)') : 'var(--border)')}`,
-                    borderRadius: 14,
-                    padding: '9px 12px',
-                    fontSize: m.sender === 'system' ? 10.5 : 12.5,
-                    lineHeight: 1.45,
-                    color: m.sender === 'user' ? 'var(--gold)' : (m.sender === 'system' ? (theme === 'dark' ? '#f59e0b' : '#b45309') : 'var(--ink)'),
-                    textAlign: m.sender === 'system' ? 'center' : 'left',
-                    boxShadow: m.sender === 'bot' ? '0 2px 10px rgba(0,0,0,0.05)' : 'none',
+                    alignSelf: m.sender === 'user' ? 'flex-end' : (m.sender === 'system' ? 'center' : 'flex-start'),
                     display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: 8
+                    flexDirection: 'column',
+                    gap: 4,
+                    maxWidth: m.sender === 'system' ? '90%' : '80%'
                   }
                 },
-                  m.sender === 'bot' && React.createElement('button', {
-                    onClick: () => handlePlayMessage(m.text),
-                    title: 'Play/Stop speech',
+                  React.createElement('div', {
                     style: {
-                      background: 'var(--cream3)',
+                      background: m.sender === 'user' ? 'var(--gold-bg)' : (m.sender === 'system' ? (theme === 'dark' ? 'rgba(245,158,11,0.08)' : 'rgba(180,83,9,0.06)') : 'var(--cream2)'),
+                      border: `1px solid ${m.sender === 'user' ? 'rgba(212,168,67,0.3)' : (m.sender === 'system' ? (theme === 'dark' ? 'rgba(245,158,11,0.25)' : 'rgba(180,83,9,0.2)') : 'var(--border)')}`,
+                      borderRadius: 14,
+                      padding: '9px 12px',
+                      fontSize: m.sender === 'system' ? 10.5 : 12.5,
+                      lineHeight: 1.45,
+                      color: m.sender === 'user' ? 'var(--gold)' : (m.sender === 'system' ? (theme === 'dark' ? '#f59e0b' : '#b45309') : 'var(--ink)'),
+                      textAlign: m.sender === 'system' ? 'center' : 'left',
+                      boxShadow: m.sender === 'bot' ? '0 2px 10px rgba(0,0,0,0.05)' : 'none',
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: 8
+                    }
+                  },
+                    m.sender === 'bot' && React.createElement('button', {
+                      onClick: () => handlePlayMessage(m.text),
+                      title: 'Play/Stop speech',
+                      style: {
+                        background: 'var(--cream3)',
+                        border: 'none',
+                        borderRadius: 4,
+                        color: accentGold,
+                        cursor: 'pointer',
+                        fontSize: 11,
+                        padding: '2px 4px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginTop: 2
+                      }
+                    }, (statusText === 'Speaking...' && activePlayingMsg.current === m.text) ? '⏹' : '🔊'),
+                    React.createElement('span', { style: { flex: 1 } }, m.text)
+                  )
+                )),
+                processing && React.createElement('div', {
+                  style: {
+                    alignSelf: 'flex-start',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 4,
+                    maxWidth: '80%'
+                  }
+                },
+                  React.createElement('div', {
+                    style: {
+                      background: 'var(--cream2)',
+                      border: '1px solid var(--border)',
+                      borderRadius: 14,
+                      padding: '9px 12px',
+                      fontSize: 12.5,
+                      lineHeight: 1.45,
+                      color: 'var(--ink3)',
+                      boxShadow: '0 2px 10px rgba(0,0,0,0.02)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 8,
+                      animation: 'pulse 1.5s infinite'
+                    }
+                  },
+                    React.createElement('span', {
+                      style: {
+                        display: 'inline-block',
+                        width: 6,
+                        height: 6,
+                        borderRadius: '50%',
+                        background: 'var(--gold)',
+                        animation: 'pulse 1s infinite'
+                      }
+                    }),
+                    React.createElement('span', null,
+                      activeAgent === 'IncomeTaxDepartmentBot'
+                        ? (taxLanguage === 'hi' ? '✦ एआई सहायक सोच रहा है...' : '✦ Co-pilot is reflecting...')
+                        : '✦ Co-pilot is reflecting...'
+                    )
+                  )
+                ),
+                React.createElement('div', { ref: chatEndRef })
+              ),
+
+              // D) Fixed Pinned Controls & Visualizer Section
+              React.createElement('div', {
+                style: {
+                  flexShrink: 0,
+                  background: 'linear-gradient(0deg, var(--cream2) 0%, var(--cream3) 100%)',
+                  borderTop: '1px solid var(--border)',
+                  padding: '12px 20px 20px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 8,
+                  boxShadow: '0 -4px 30px rgba(0,0,0,0.03)'
+                }
+              },
+                // 🔬 PM Insights Annotation Mode Overlay 2
+                showPmInsights && React.createElement('div', {
+                  style: {
+                    background: 'rgba(212,168,67,0.05)',
+                    border: '1px dashed var(--gold)',
+                    borderRadius: 12,
+                    padding: '10px 14px',
+                    fontSize: 11.5,
+                    lineHeight: 1.45,
+                    marginBottom: 4
+                  }
+                },
+                  React.createElement('strong', { style: { color: accentGold } }, '🔬 PM Insight — Tap-to-Talk: '),
+                  React.createElement('span', { style: { color: 'var(--ink2)', fontWeight: 300 } }, 'Tap-to-talk avoids recording background noise, and the decibel meter confirms mic activity.')
+                ),
+
+                // Pinned Collapsible Activity Logs Console (Cleanly White-Labeled)
+                React.createElement('div', {
+                  style: {
+                    background: 'var(--cream)',
+                    border: '1px solid var(--border)',
+                    borderRadius: 8,
+                    padding: '6px 12px',
+                    fontSize: 10,
+                    fontFamily: "'JetBrains Mono', monospace"
+                  }
+                },
+                  React.createElement('div', {
+                    style: {
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      cursor: 'pointer'
+                    },
+                    onClick: () => setLogsExpanded(!logsExpanded)
+                  },
+                    React.createElement('div', { style: { color: accentGold, display: 'flex', alignItems: 'center', gap: 6 } },
+                      React.createElement('span', { style: { display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: processing ? accentGold : (recording ? '#ff4b4b' : '#39d353'), animation: (processing || recording) ? 'pulse 1s infinite' : 'none' } }),
+                      React.createElement('span', null, logs.length > 0 ? logs[0] : ((activeAgent === 'IncomeTaxDepartmentBot' && taxLanguage === 'hi') ? 'गतिविधि लॉग सक्रिय।' : 'Activity Log active.'))
+                    ),
+                    React.createElement('span', { style: { color: 'var(--ink3)', fontSize: 9.5 } }, (activeAgent === 'IncomeTaxDepartmentBot' && taxLanguage === 'hi') ? (logsExpanded ? 'लॉग छुपाएं ▲' : 'गतिविधि लॉग दिखाएं ▼') : (logsExpanded ? 'Hide Logs ▲' : 'Show Logs ▼'))
+                  ),
+                  logsExpanded && React.createElement('div', {
+                    style: {
+                      marginTop: 8,
+                      maxHeight: 110,
+                      overflowY: 'auto',
+                      borderTop: '1px solid var(--border)',
+                      paddingTop: 8,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 4,
+                      color: 'var(--ink2)'
+                    }
+                  },
+                    logs.map((log, i) => React.createElement('div', { key: i, style: { opacity: Math.max(0.3, 1 - i * 0.08) } }, log))
+                  )
+                ),
+
+                // Oscilloscope visualizer line
+                React.createElement('div', {
+                  style: {
+                    height: 30,
+                    position: 'relative',
+                    display: 'flex',
+                    alignItems: 'center',
+                    background: 'var(--cream3)',
+                    borderRadius: 6,
+                    border: '1px solid var(--border)',
+                    overflow: 'hidden'
+                  }
+                },
+                  React.createElement('canvas', { ref: canvasRef, width: 400, height: 30, style: { width: '100%', height: 30 } }),
+                  React.createElement('div', {
+                    style: {
+                      position: 'absolute',
+                      left: 10,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      fontSize: 8,
+                      fontFamily: "'JetBrains Mono', monospace",
+                      color: recording ? '#ff4b4b' : (processing ? accentGold : 'var(--ink3)'),
+                      letterSpacing: '0.04em'
+                    }
+                  }, (activeAgent === 'IncomeTaxDepartmentBot' && taxLanguage === 'hi') ? `इंजन: ${recording ? 'सुन रहा है...' : (processing ? 'प्रक्रिया में...' : (statusText.includes('Speaking') ? 'बोल रहा है...' : 'तैयार'))}` : `ENGINE: ${statusText.toUpperCase()}`)
+                ),
+
+                // Barge-in Interruption Overlay Trigger
+                (statusText === 'Speaking...' || statusText.includes('Speaking')) && React.createElement('button', {
+                  onClick: () => {
+                    audioRef.current.pause();
+                    window.speechSynthesis.cancel();
+                    activePlayingMsg.current = null;
+                    setStatusText('Idle');
+                    addLog('Interrupted: User barge-in detected.');
+                  },
+                  style: {
+                    background: 'rgba(255, 75, 75, 0.08)',
+                    border: '1px solid rgba(255, 75, 75, 0.3)',
+                    borderRadius: 100,
+                    color: '#ff4b4b',
+                    padding: '6px 14px',
+                    fontSize: 10.5,
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    fontFamily: "'Outfit', sans-serif",
+                    margin: '4px auto 0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6,
+                    animation: 'pulse 1.5s infinite'
+                  }
+                }, '🛑 Tap to Interrupt Co-Pilot (Barge-In)'),
+
+                // Hands-Free Loop Active Indicator
+                handsFreeActive && React.createElement('div', {
+                  style: {
+                    fontSize: 11,
+                    fontFamily: "'JetBrains Mono', monospace",
+                    color: '#22c55e',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 6,
+                    margin: '4px auto 0',
+                    fontWeight: 'bold',
+                    animation: 'pulse 2s infinite'
+                  }
+                }, '🟢 Continuous Hands-Free Mode Active'),
+
+                // Main chat panel controls row
+                React.createElement('div', {
+                  style: {
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 12,
+                    width: '100%'
+                  }
+                },
+                  // Left: Dedicated Microphone Button
+                  React.createElement('button', {
+                    onClick: toggleMic,
+                    disabled: processing,
+                    title: recording ? 'Stop recording & submit' : 'Start voice input',
+                    style: {
+                      width: 44,
+                      height: 44,
+                      borderRadius: '50%',
+                      background: recording ? '#ff4b4b' : accentGold,
+                      color: recording ? '#fff' : '#000',
                       border: 'none',
-                      borderRadius: 4,
-                      color: accentGold,
                       cursor: 'pointer',
-                      fontSize: 11,
-                      padding: '2px 4px',
+                      fontSize: 18,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      marginTop: 2
+                      boxShadow: recording ? '0 0 15px rgba(255,75,75,0.4)' : 'none',
+                      transition: 'all 0.2s',
+                      transform: recording ? 'scale(1.05)' : 'scale(1)',
+                      flexShrink: 0
                     }
-                  }, (statusText === 'Speaking...' && activePlayingMsg.current === m.text) ? '⏹' : '🔊'),
-                  React.createElement('span', { style: { flex: 1 } }, m.text)
-                )
-              )),
-              processing && React.createElement('div', {
-                style: {
-                  alignSelf: 'flex-start',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 4,
-                  maxWidth: '80%'
-                }
-              },
-                React.createElement('div', {
-                  style: {
-                    background: 'var(--cream2)',
-                    border: '1px solid var(--border)',
-                    borderRadius: 14,
-                    padding: '9px 12px',
-                    fontSize: 12.5,
-                    lineHeight: 1.45,
-                    color: 'var(--ink3)',
-                    boxShadow: '0 2px 10px rgba(0,0,0,0.02)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 8,
-                    animation: 'pulse 1.5s infinite'
-                  }
-                },
-                  React.createElement('span', {
+                  }, recording ? '⏹' : '🎙️'),
+
+                  // Decibel amplitude signal level indicator next to mic (if recording)
+                  recording && React.createElement('div', {
                     style: {
-                      display: 'inline-block',
-                      width: 6,
-                      height: 6,
-                      borderRadius: '50%',
-                      background: 'var(--gold)',
-                      animation: 'pulse 1s infinite'
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 6,
+                      background: 'var(--cream3)',
+                      border: '1px solid var(--border)',
+                      borderRadius: 20,
+                      padding: '8px 14px',
+                      height: 44,
+                      flexShrink: 0
                     }
-                  }),
-                  React.createElement('span', null, 
-                    activeAgent === 'IncomeTaxDepartmentBot'
-                      ? (taxLanguage === 'hi' ? '✦ एआई सहायक सोच रहा है...' : '✦ Co-pilot is reflecting...')
-                      : '✦ Co-pilot is reflecting...'
+                  },
+                    React.createElement('span', { style: { fontSize: 10, color: '#ff4b4b', fontWeight: 'bold' } }, 'REC'),
+                    React.createElement('div', {
+                      style: {
+                        display: 'flex',
+                        alignItems: 'flex-end',
+                        gap: 2,
+                        width: 40,
+                        height: 14
+                      }
+                    },
+                      [0.2, 0.5, 0.8, 0.4, 0.9, 0.6].map((h, i) => {
+                        const activeHeight = Math.max(15, (micLevel / 90) * 100) * h;
+                        return React.createElement('div', {
+                          key: i,
+                          style: {
+                            width: 3,
+                            height: `${activeHeight}%`,
+                            background: '#ff4b4b',
+                            borderRadius: 2,
+                            transition: 'height 0.08s ease-out'
+                          }
+                        });
+                      })
+                    ),
+                    React.createElement('span', { style: { fontSize: 8.5, fontFamily: "'JetBrains Mono', monospace", color: 'var(--ink3)' } }, `${micLevel} dB`)
+                  ),
+
+                  // Middle & Right: Chat Form (Input + Send Button)
+                  React.createElement('form', {
+                    onSubmit: handleTextSubmit,
+                    style: {
+                      flex: 1,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 8
+                    }
+                  },
+                    React.createElement('input', {
+                      type: 'text',
+                      value: inputText,
+                      onChange: e => setInputText(e.target.value),
+                      placeholder: activeAgent === 'IncomeTaxDepartmentBot'
+                        ? (recording
+                          ? (taxLanguage === 'hi' ? 'सुन रहा हूँ... भेजने के लिए ⏹ (स्टॉप) पर क्लिक करें!' : 'Listening... Click ⏹ (Stop) to Send!')
+                          : (taxLanguage === 'hi' ? 'या यहाँ संदेश टाइप करें...' : 'Or type a message here...'))
+                        : (recording ? 'Listening... Click ⏹ (Stop) to Send!' : 'Or type a message...'),
+                      style: {
+                        flex: 1,
+                        background: 'var(--white)',
+                        border: '1px solid var(--border)',
+                        borderRadius: 20,
+                        padding: '12px 18px',
+                        color: 'var(--ink)',
+                        fontSize: 12,
+                        outline: 'none',
+                        fontFamily: "'Outfit', sans-serif",
+                        transition: 'border-color 0.2s',
+                        height: 44
+                      },
+                      onFocus: e => e.currentTarget.style.borderColor = accentGold,
+                      onBlur: e => e.currentTarget.style.borderColor = 'var(--border)'
+                    }),
+
+                    // Dedicated beautiful Send button on the far right
+                    React.createElement('button', {
+                      type: 'submit',
+                      disabled: !inputText.trim() || processing,
+                      style: {
+                        height: 44,
+                        padding: '0 20px',
+                        borderRadius: 20,
+                        background: inputText.trim() ? accentGold : 'var(--cream3)',
+                        color: inputText.trim() ? '#000' : 'var(--ink4)',
+                        border: 'none',
+                        cursor: inputText.trim() ? 'pointer' : 'not-allowed',
+                        fontSize: 12.5,
+                        fontWeight: 600,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 6,
+                        transition: 'all 0.2s',
+                        flexShrink: 0
+                      }
+                    },
+                      activeAgent === 'IncomeTaxDepartmentBot'
+                        ? (taxLanguage === 'hi' ? 'भेजें 📤' : 'Send 📤')
+                        : 'Send 📤'
+                    )
                   )
-                )
-              ),
-              React.createElement('div', { ref: chatEndRef })
-            ),
+                ),
 
-            // D) Fixed Pinned Controls & Visualizer Section
-            React.createElement('div', {
-              style: {
-                flexShrink: 0,
-                background: 'linear-gradient(0deg, var(--cream2) 0%, var(--cream3) 100%)',
-                borderTop: '1px solid var(--border)',
-                padding: '12px 20px 20px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 8,
-                boxShadow: '0 -4px 30px rgba(0,0,0,0.03)'
-              }
-            },
-              // 🔬 PM Insights Annotation Mode Overlay 2
-              showPmInsights && React.createElement('div', {
-                style: {
-                  background: 'rgba(212,168,67,0.05)',
-                  border: '1px dashed var(--gold)',
-                  borderRadius: 12,
-                  padding: '10px 14px',
-                  fontSize: 11.5,
-                  lineHeight: 1.45,
-                  marginBottom: 4
-                }
-              },
-                React.createElement('strong', { style: { color: accentGold } }, '🔬 PM Insight — Tap-to-Talk: '),
-                React.createElement('span', { style: { color: 'var(--ink2)', fontWeight: 300 } }, 'Tap-to-talk avoids recording background noise, and the decibel meter confirms mic activity.')
-              ),
-
-              // Pinned Collapsible Activity Logs Console (Cleanly White-Labeled)
-              React.createElement('div', {
-                style: {
-                  background: 'var(--cream)',
-                  border: '1px solid var(--border)',
-                  borderRadius: 8,
-                  padding: '6px 12px',
-                  fontSize: 10,
-                  fontFamily: "'JetBrains Mono', monospace"
-                }
-              },
+                // White labeled Telemetry benchmarks
                 React.createElement('div', {
                   style: {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    cursor: 'pointer'
-                  },
-                  onClick: () => setLogsExpanded(!logsExpanded)
-                },
-                  React.createElement('div', { style: { color: accentGold, display: 'flex', alignItems: 'center', gap: 6 } },
-                    React.createElement('span', { style: { display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: processing ? accentGold : (recording ? '#ff4b4b' : '#39d353'), animation: (processing || recording) ? 'pulse 1s infinite' : 'none' } }),
-                    React.createElement('span', null, logs.length > 0 ? logs[0] : ((activeAgent === 'IncomeTaxDepartmentBot' && taxLanguage === 'hi') ? 'गतिविधि लॉग सक्रिय।' : 'Activity Log active.'))
-                  ),
-                  React.createElement('span', { style: { color: 'var(--ink3)', fontSize: 9.5 } }, (activeAgent === 'IncomeTaxDepartmentBot' && taxLanguage === 'hi') ? (logsExpanded ? 'लॉग छुपाएं ▲' : 'गतिविधि लॉग दिखाएं ▼') : (logsExpanded ? 'Hide Logs ▲' : 'Show Logs ▼'))
-                ),
-                logsExpanded && React.createElement('div', {
-                  style: {
-                    marginTop: 8,
-                    maxHeight: 110,
-                    overflowY: 'auto',
                     borderTop: '1px solid var(--border)',
-                    paddingTop: 8,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 4,
-                    color: 'var(--ink2)'
-                  }
-                },
-                  logs.map((log, i) => React.createElement('div', { key: i, style: { opacity: Math.max(0.3, 1 - i * 0.08) } }, log))
-                )
-              ),
-
-              // Oscilloscope visualizer line
-              React.createElement('div', {
-                style: {
-                  height: 30,
-                  position: 'relative',
-                  display: 'flex',
-                  alignItems: 'center',
-                  background: 'var(--cream3)',
-                  borderRadius: 6,
-                  border: '1px solid var(--border)',
-                  overflow: 'hidden'
-                }
-              },
-                React.createElement('canvas', { ref: canvasRef, width: 400, height: 30, style: { width: '100%', height: 30 } }),
-                React.createElement('div', {
-                  style: {
-                    position: 'absolute',
-                    left: 10,
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    fontSize: 8,
+                    paddingTop: 6,
+                    fontSize: 8.5,
                     fontFamily: "'JetBrains Mono', monospace",
-                    color: recording ? '#ff4b4b' : (processing ? accentGold : 'var(--ink3)'),
-                    letterSpacing: '0.04em'
-                  }
-                }, (activeAgent === 'IncomeTaxDepartmentBot' && taxLanguage === 'hi') ? `इंजन: ${recording ? 'सुन रहा है...' : (processing ? 'प्रक्रिया में...' : (statusText.includes('Speaking') ? 'बोल रहा है...' : 'तैयार'))}` : `ENGINE: ${statusText.toUpperCase()}`)
-              ),
-
-              // Barge-in Interruption Overlay Trigger
-              (statusText === 'Speaking...' || statusText.includes('Speaking')) && React.createElement('button', {
-                onClick: () => {
-                  audioRef.current.pause();
-                  window.speechSynthesis.cancel();
-                  activePlayingMsg.current = null;
-                  setStatusText('Idle');
-                  addLog('Interrupted: User barge-in detected.');
-                },
-                style: {
-                  background: 'rgba(255, 75, 75, 0.08)',
-                  border: '1px solid rgba(255, 75, 75, 0.3)',
-                  borderRadius: 100,
-                  color: '#ff4b4b',
-                  padding: '6px 14px',
-                  fontSize: 10.5,
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  fontFamily: "'Outfit', sans-serif",
-                  margin: '4px auto 0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  animation: 'pulse 1.5s infinite'
-                }
-              }, '🛑 Tap to Interrupt Co-Pilot (Barge-In)'),
-
-              // Hands-Free Loop Active Indicator
-              handsFreeActive && React.createElement('div', {
-                style: {
-                  fontSize: 11,
-                  fontFamily: "'JetBrains Mono', monospace",
-                  color: '#22c55e',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 6,
-                  margin: '4px auto 0',
-                  fontWeight: 'bold',
-                  animation: 'pulse 2s infinite'
-                }
-              }, '🟢 Continuous Hands-Free Mode Active'),
-
-              // Main chat panel controls row
-              React.createElement('div', {
-                style: {
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 12,
-                  width: '100%'
-                }
-              },
-                // Left: Dedicated Microphone Button
-                React.createElement('button', {
-                  onClick: toggleMic,
-                  disabled: processing,
-                  title: recording ? 'Stop recording & submit' : 'Start voice input',
-                  style: {
-                    width: 44,
-                    height: 44,
-                    borderRadius: '50%',
-                    background: recording ? '#ff4b4b' : accentGold,
-                    color: recording ? '#fff' : '#000',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontSize: 18,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: recording ? '0 0 15px rgba(255,75,75,0.4)' : 'none',
-                    transition: 'all 0.2s',
-                    transform: recording ? 'scale(1.05)' : 'scale(1)',
-                    flexShrink: 0
-                  }
-                }, recording ? '⏹' : '🎙️'),
-
-                // Decibel amplitude signal level indicator next to mic (if recording)
-                recording && React.createElement('div', {
-                  style: {
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 6,
-                    background: 'var(--cream3)',
-                    border: '1px solid var(--border)',
-                    borderRadius: 20,
-                    padding: '8px 14px',
-                    height: 44,
-                    flexShrink: 0
+                    color: 'var(--ink3)'
                   }
                 },
-                  React.createElement('span', { style: { fontSize: 10, color: '#ff4b4b', fontWeight: 'bold' } }, 'REC'),
-                  React.createElement('div', {
-                    style: {
-                      display: 'flex',
-                      alignItems: 'flex-end',
-                      gap: 2,
-                      width: 40,
-                      height: 14
-                    }
-                  },
-                    [0.2, 0.5, 0.8, 0.4, 0.9, 0.6].map((h, i) => {
-                      const activeHeight = Math.max(15, (micLevel / 90) * 100) * h;
-                      return React.createElement('div', {
-                        key: i,
-                        style: {
-                          width: 3,
-                          height: `${activeHeight}%`,
-                          background: '#ff4b4b',
-                          borderRadius: 2,
-                          transition: 'height 0.08s ease-out'
-                        }
-                      });
-                    })
+                  React.createElement('div', { style: { display: 'flex', gap: 12 } },
+                    React.createElement('span', null, `STT: ${stats.stt ? `${stats.stt.toFixed(0)}ms` : '--'}`),
+                    React.createElement('span', null, `LLM: ${stats.gpt ? `${stats.gpt.toFixed(0)}ms` : '--'}`),
+                    React.createElement('span', null, `TTS: ${stats.tts ? `${stats.tts.toFixed(0)}ms` : '--'}`),
+                    React.createElement('span', null, `AUD_OUT: ${stats.audio_out ? `${(stats.audio_out / 1024).toFixed(1)}kB` : '--'}`)
                   ),
-                  React.createElement('span', { style: { fontSize: 8.5, fontFamily: "'JetBrains Mono', monospace", color: 'var(--ink3)' } }, `${micLevel} dB`)
+                  summary && React.createElement('span', {
+                    style: { color: accentGold, cursor: 'pointer' },
+                    title: summary,
+                    onClick: () => {
+                      setMessages(prev => [...prev, {
+                        id: 'sys-' + Date.now(),
+                        sender: 'system',
+                        text: (activeAgent === 'IncomeTaxDepartmentBot' && taxLanguage === 'hi') ? `📝 सत्र विवरण: ${summary.replace(/<br\/>/g, ' ')}` : `📝 SESSION NOTE SUMMARY: ${summary.replace(/<br\/>/g, ' ')}`
+                      }]);
+                    }
+                  }, (activeAgent === 'IncomeTaxDepartmentBot' && taxLanguage === 'hi') ? 'सत्र विवरण देखें 📝' : 'View Session Notes 📝')
                 ),
 
-                // Middle & Right: Chat Form (Input + Send Button)
-                React.createElement('form', {
-                  onSubmit: handleTextSubmit,
+                React.createElement('p', {
                   style: {
-                    flex: 1,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 8
+                    fontSize: 10,
+                    fontFamily: "'Outfit',sans-serif",
+                    color: 'var(--ink3)',
+                    textAlign: 'center',
+                    marginTop: 10,
+                    marginBottom: 0,
+                    fontWeight: 300,
+                    lineHeight: 1.45
                   }
                 },
-                  React.createElement('input', {
-                    type: 'text',
-                    value: inputText,
-                    onChange: e => setInputText(e.target.value),
-                    placeholder: activeAgent === 'IncomeTaxDepartmentBot'
-                      ? (recording
-                          ? (taxLanguage === 'hi' ? 'सुन रहा हूँ... भेजने के लिए ⏹ (स्टॉप) पर क्लिक करें!' : 'Listening... Click ⏹ (Stop) to Send!')
-                          : (taxLanguage === 'hi' ? 'या यहाँ संदेश टाइप करें...' : 'Or type a message here...'))
-                      : (recording ? 'Listening... Click ⏹ (Stop) to Send!' : 'Or type a message...'),
-                    style: {
-                      flex: 1,
-                      background: 'var(--white)',
-                      border: '1px solid var(--border)',
-                      borderRadius: 20,
-                      padding: '12px 18px',
-                      color: 'var(--ink)',
-                      fontSize: 12,
-                      outline: 'none',
-                      fontFamily: "'Outfit', sans-serif",
-                      transition: 'border-color 0.2s',
-                      height: 44
-                    },
-                    onFocus: e => e.currentTarget.style.borderColor = accentGold,
-                    onBlur: e => e.currentTarget.style.borderColor = 'var(--border)'
-                  }),
-
-                  // Dedicated beautiful Send button on the far right
-                  React.createElement('button', {
-                    type: 'submit',
-                    disabled: !inputText.trim() || processing,
-                    style: {
-                      height: 44,
-                      padding: '0 20px',
-                      borderRadius: 20,
-                      background: inputText.trim() ? accentGold : 'var(--cream3)',
-                      color: inputText.trim() ? '#000' : 'var(--ink4)',
-                      border: 'none',
-                      cursor: inputText.trim() ? 'pointer' : 'not-allowed',
-                      fontSize: 12.5,
-                      fontWeight: 600,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 6,
-                      transition: 'all 0.2s',
-                      flexShrink: 0
-                    }
-                  }, 
-                    activeAgent === 'IncomeTaxDepartmentBot'
-                      ? (taxLanguage === 'hi' ? 'भेजें 📤' : 'Send 📤')
-                      : 'Send 📤'
-                  )
+                  "⚠️ Notice: This is an MVP prototype and AI can make mistakes. Custom integrations (e.g. Exotel/Twilio connections for real telephony/IVR calls) are available on request. Contact admin for production setups."
                 )
-              ),
-
-              // White labeled Telemetry benchmarks
-              React.createElement('div', {
-                style: {
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  borderTop: '1px solid var(--border)',
-                  paddingTop: 6,
-                  fontSize: 8.5,
-                  fontFamily: "'JetBrains Mono', monospace",
-                  color: 'var(--ink3)'
-                }
-              },
-                React.createElement('div', { style: { display: 'flex', gap: 12 } },
-                  React.createElement('span', null, `STT: ${stats.stt ? `${stats.stt.toFixed(0)}ms` : '--'}`),
-                  React.createElement('span', null, `LLM: ${stats.gpt ? `${stats.gpt.toFixed(0)}ms` : '--'}`),
-                  React.createElement('span', null, `TTS: ${stats.tts ? `${stats.tts.toFixed(0)}ms` : '--'}`),
-                  React.createElement('span', null, `AUD_OUT: ${stats.audio_out ? `${(stats.audio_out / 1024).toFixed(1)}kB` : '--'}`)
-                ),
-                summary && React.createElement('span', {
-                  style: { color: accentGold, cursor: 'pointer' },
-                  title: summary,
-                  onClick: () => {
-                    setMessages(prev => [...prev, {
-                      id: 'sys-' + Date.now(),
-                      sender: 'system',
-                      text: (activeAgent === 'IncomeTaxDepartmentBot' && taxLanguage === 'hi') ? `📝 सत्र विवरण: ${summary.replace(/<br\/>/g, ' ')}` : `📝 SESSION NOTE SUMMARY: ${summary.replace(/<br\/>/g, ' ')}`
-                    }]);
-                  }
-                }, (activeAgent === 'IncomeTaxDepartmentBot' && taxLanguage === 'hi') ? 'सत्र विवरण देखें 📝' : 'View Session Notes 📝')
-              ),
-
-              React.createElement('p', {
-                style: {
-                  fontSize: 10,
-                  fontFamily: "'Outfit',sans-serif",
-                  color: 'var(--ink3)',
-                  textAlign: 'center',
-                  marginTop: 10,
-                  marginBottom: 0,
-                  fontWeight: 300,
-                  lineHeight: 1.45
-                }
-              },
-                "⚠️ Notice: This is an MVP prototype and AI can make mistakes. Custom integrations (e.g. Exotel/Twilio connections for real telephony/IVR calls) are available on request. Contact admin for production setups."
               )
-            )
+            ),
+            // RIGHT PANEL: Removed diagnostics sidebar to declutter layout
           ),
-          // RIGHT PANEL: Removed diagnostics sidebar to declutter layout
-        ),
 
-        // Floating Action Buttons (FABs) at bottom right
-        React.createElement('div', {
-          style: {
-            position: 'absolute',
-            bottom: 24,
-            right: 24,
-            display: 'flex',
-            gap: 8,
-            zIndex: 9999
-          }
-        },
-          // 🔬 Design Insights Walkthrough FAB
-          React.createElement('button', {
-            onClick: () => setShowPmInsights(!showPmInsights),
+          // Floating Action Buttons (FABs) at bottom right
+          React.createElement('div', {
             style: {
-              background: showPmInsights ? accentGold : 'var(--cream2)',
-              color: showPmInsights ? '#000' : accentGold,
-              border: `1px solid ${accentGold}`,
-              borderRadius: 20,
-              padding: '8px 16px',
-              fontSize: 11.5,
-              fontWeight: 600,
-              cursor: 'pointer',
-              boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-              fontFamily: "'Outfit', sans-serif",
-              transition: 'all 0.2s'
+              position: 'absolute',
+              bottom: 24,
+              right: 24,
+              display: 'flex',
+              gap: 8,
+              zIndex: 9999
             }
-          }, showPmInsights ? 'Close PM Insights 🔬' : '🔬 PM Insights')
+          },
+            // 🔬 Design Insights Walkthrough FAB
+            React.createElement('button', {
+              onClick: () => setShowPmInsights(!showPmInsights),
+              style: {
+                background: showPmInsights ? accentGold : 'var(--cream2)',
+                color: showPmInsights ? '#000' : accentGold,
+                border: `1px solid ${accentGold}`,
+                borderRadius: 20,
+                padding: '8px 16px',
+                fontSize: 11.5,
+                fontWeight: 600,
+                cursor: 'pointer',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+                fontFamily: "'Outfit', sans-serif",
+                transition: 'all 0.2s'
+              }
+            }, showPmInsights ? 'Close PM Insights 🔬' : '🔬 PM Insights')
+          )
         )
-      )
-    );
-  }
+      );
+    }
 
 
 
